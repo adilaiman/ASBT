@@ -13,6 +13,8 @@ def genPrivateKey():
     private_key = random_key()
     with open('privateKey.txt', 'w') as f:
         f.write(private_key)
+    img = qr.make(private_key)
+    img.save("privateKey.png")
     return private_key
 
 #generates a public key using the already generated private key and writes to txt file
