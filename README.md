@@ -12,8 +12,8 @@ pip install qrcode[pil]
 ## Features
 - [x] Generate private key and output to txt file
 - [x] Generate public key and output to txt file
-- [ ] Generate wallet address and output to txt file
-- [ ] Create QR Code using wallet address
+- [x] Generate wallet address and output to txt file
+- [x] Create QR Code using wallet address
 - [ ] Display recent 10 transactions
 - [ ] Display wallet balance
 
