@@ -14,7 +14,7 @@ pip install qrcode[pil]
 - [x] Generate public key and output to txt file
 - [x] Generate wallet address and output to txt file
 - [x] Create QR Code using wallet address
-- [ ] Display recent 10 transactions
+- [x] Display recent 10 transactions
 - [ ] Display wallet balance
 
 
