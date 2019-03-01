@@ -10,8 +10,8 @@ pip install qrcode
 ```
 
 ## Features
-- [ ] Generate private key
-- [ ] Generate public key
+- [x] Generate private key
+- [x] Generate public key
 - [ ] Generate wallet address
 - [ ] Create QR Code using wallet address
 - [ ] Display recent 10 transactions
