@@ -21,3 +21,12 @@ def genPublicKey(privateKey):
     with open('publicKey.txt', 'w') as f:
         f.write(public_key)
     return public_key
+
+#generates a wallet address, this is the one you share to receive bitcoins, then writes to txt file and generates a qrcode png
+def genWalletAddress(publicKey):
+    walletAddress = pubtoaddr(publicKey)
+    with open('walletAddress.txt', 'w') as f:
+        f.write(walletAddress)
+    img = qr.make(walletAddress)
+    img.save("walletAddress.png")
+    return walletAddress
