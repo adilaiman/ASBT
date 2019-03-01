@@ -9,9 +9,15 @@ ASBT is a CLI based tool for managing and creating Bitcoin wallets.
 - pip
 - Bitcoin, QR Code and Pillow modules
 
-```python
+```
 pip install bitcoin
-pip install qrcode[pil]
+
+pip install qrcode[pil] 
+
+or
+
+pip install qrcode
+pip install pillow
 ```
 
 ## Features
@@ -24,5 +30,5 @@ pip install qrcode[pil]
 ## Usage
 Simply run:
 ```
-python bitcoinWallet.py
+python ASBT.py
 ```
