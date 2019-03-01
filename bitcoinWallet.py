@@ -84,13 +84,33 @@ def viewTransactions(walletAddress):
                     print("Included In Blocks --> " + v_out)
         print(Style.RESET_ALL)
 
+#get wallet balance
+def getWalletBalance(walletAddress):
+
+    #pull data from public block chain, stored as a list of dictionaries
+    transactions = history(walletAddress)
+
+    #change satoshis into BTC and remove trailing string from block hash
+    for transaction in transactions:
+        transaction["value"] = transaction["value"]/(10**8)
+
+    balance = 0
+    #if receive address is not equal to our wallet address, minus from total else add
+    for transaction in transactions:
+        if transaction["address"] == walletAddress:
+            balance += transaction["value"]
+        else:
+            balance -= transaction["value"]
+
+    return balance
+
 #prompt to ask user what to do.
 if __name__ == "__main__":
     init() # filter ANSI escape characters on windows
     loop = True
     while loop == True:
         print("<---Welcome to Adi's Scuffed Bitcoin Tool (ASBT)!--->")
-        choice = input("(1) Generate Private Key. \n(2) Generate Public Key \n(3) Generate Wallet Address \n(4) View Transactions \n(5) Quit \nEnter your option: ")
+        choice = input("(1) Generate Private Key. \n(2) Generate Public Key \n(3) Generate Wallet Address \n(4) View Transactions \n(5) Get Balance \n(6) Quit \nEnter your option: ")
         if choice == "1":
             print("\n" + Fore.GREEN + genPrivateKey() + Style.RESET_ALL + "\n")
         elif choice == "2":
@@ -103,5 +123,8 @@ if __name__ == "__main__":
             usersWallet = input("Please enter your wallet address: ")
             viewTransactions(usersWallet)
         elif choice == "5":
+            usersWallet = input("Please enter your wallet address: ")
+            print("\n" + Fore.GREEN, getWalletBalance(usersWallet), Style.RESET_ALL + "\n")
+        elif choice == "6":
             loop = False
             deinit()
