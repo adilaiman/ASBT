@@ -2,17 +2,17 @@
 ## Dependencies
 - Python3
 - pip
-- Bitcoin and QR code modules
+- Bitcoin, QR Code and Pillow modules
 
 ```python
 pip install bitcoin
-pip install qrcode
+pip install qrcode[pil]
 ```
 
 ## Features
-- [x] Generate private key
-- [x] Generate public key
-- [ ] Generate wallet address
+- [x] Generate private key and output to txt file
+- [x] Generate public key and output to txt file
+- [ ] Generate wallet address and output to txt file
 - [ ] Create QR Code using wallet address
 - [ ] Display recent 10 transactions
 - [ ] Display wallet balance
