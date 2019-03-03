@@ -5,9 +5,9 @@
 
 # import bitcoin, qrcode modules duh? don't reinvent the wheel
 # pip install bitcoin && pip install qrcode[pil]
-from bitcoin import *
+import bitcoin
 import qrcode as qr
-from colorama import * # module to allow color output to console
+import colorama # module to allow color output to console
 
 # generates a private key (this is what you keep secret) and writes to txt file
 def genPrivateKey():
