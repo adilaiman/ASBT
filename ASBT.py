@@ -9,29 +9,36 @@ from bitcoin import *
 import qrcode as qr
 from colorama import * # module to allow color output to console
 
+# open file and write out data to txt file and qrcode
+def writeOut(data,filename,option=0):
+
+    #  open file to write data
+    with open(filename + ".txt", 'w') as f:
+        f.write(data)
+
+    # output qr code if option is 1 else don't
+    if option == 1:
+        img = qr.make(data)
+        img.save(filename+".png")
+
+   
+
 # generates a private key (this is what you keep secret) and writes to txt file
 def genPrivateKey():
     private_key = random_key()
-    with open('privateKey.txt', 'w') as f:
-        f.write(private_key)
-    img = qr.make(private_key)
-    img.save("privateKey.png")
+    writeOut(private_key,"privateKey",1)
     return private_key
 
 # generates a public key using the already generated private key and writes to txt file
 def genPublicKey(privateKey):
     public_key = privtopub(privateKey)
-    with open('publicKey.txt', 'w') as f:
-        f.write(public_key)
+    writeOut(public_key,"publicKey")
     return public_key
 
 # generates a wallet address, this is the one you share to receive bitcoins, then writes to txt file and generates a qrcode png
 def genWalletAddress(publicKey):
     walletAddress = pubtoaddr(publicKey)
-    with open('walletAddress.txt', 'w') as f:
-        f.write(walletAddress)
-    img = qr.make(walletAddress)
-    img.save("walletAddress.png")
+    writeOut(walletAddress,"walletAddress",1)
     return walletAddress
 
 # gets data from public blockchain and prints latest 10 transactions
