@@ -21,8 +21,6 @@ def writeOut(data,filename,option=0):
         img = qr.make(data)
         img.save(filename+".png")
 
-   
-
 # generates a private key (this is what you keep secret) and writes to txt file
 def genPrivateKey():
     private_key = random_key()
@@ -40,6 +38,20 @@ def genWalletAddress(publicKey):
     walletAddress = pubtoaddr(publicKey)
     writeOut(walletAddress,"walletAddress",1)
     return walletAddress
+
+def parseTransaction(data):
+    for k,v in data.items():
+        # value into string to output
+        v_out = str(v)
+        #format output
+        if k == "value":
+            print("Amount: --> " + v_out + " BTC")
+        elif k == "address":
+            print("Receive Address --> " + v_out)
+        elif k == "output":
+            print("Block Hash --> " + v_out)
+        elif k == "block_height":
+            print("Included In Blocks --> " + v_out)
 
 # gets data from public blockchain and prints latest 10 transactions
 def viewTransactions(walletAddress):
@@ -59,37 +71,13 @@ def viewTransactions(walletAddress):
     if len(transactions) < 10:
         for counter, transaction in enumerate(transactions):
             print("\n---",counter+1,"---") # Title displaying the number of the transaction
-            for k,v in transaction.items():
-                # turn key, value pairs into string to output
-                k_out = str(k)
-                v_out = str(v)
-                #format output
-                if k == "value":
-                    print("Amount: --> " + v_out + " BTC")
-                elif k == "address":
-                    print("Receive Address --> " + v_out)
-                elif k == "output":
-                    print("Block Hash --> " + v_out)
-                elif k == "block_height":
-                    print("Included In Blocks --> " + v_out)
+            parseTransaction(transaction)
                 
         print(Style.RESET_ALL)
     else:
         for i in range(10):
             print("\n---",i+1,"---") # Title displaying the number of the transaction
-            for k,v in transactions[i].items():
-                # turn key, value pairs into string to output
-                k_out = str(k)
-                v_out = str(v)
-                # format output
-                if k == "value":
-                    print("Amount: --> " + v_out + " BTC")
-                elif k == "address":
-                    print("Receive Address --> " + v_out)
-                elif k == "output":
-                    print("Block Hash --> " + v_out)
-                elif k == "block_height":
-                    print("Included In Blocks --> " + v_out)
+            parseTransaction(transactions[i])
         print(Style.RESET_ALL)
 
 # get wallet balance
