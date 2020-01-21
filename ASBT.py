@@ -1,7 +1,7 @@
 # Adi's Scuffed Bitcoin Tool (ASBT)
 # Author: Adi Laiman
 # Date: 01 March 2019 (01-03-2019)
-# Email: laiman@posteo.de
+# Contact: github.com/adilaiman
 
 # import bitcoin, qrcode modules duh? don't reinvent the wheel
 # pip install bitcoin && pip install qrcode[pil]
